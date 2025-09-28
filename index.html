@@ -64,6 +64,71 @@ button:hover { background: #003f7f; transform: scale(1.05);}
   <input type="radio" name="q3" value="c"> Mandar para todos os grupos<br>
   <button onclick="checkAnswer('q3','a')">Responder</button>
   <p id="result-q3"></p>
+  <p class="feedback">💡 Cheque sempre a origem antes de comparti<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trilha Guardiões Digitais - Fase por Fase</title>
+<style>
+body { font-family: Arial, sans-serif; background: #f0f4f8; color: #333; padding: 20px; margin:0; transition: background 0.5s ease; }
+h1 { text-align: center; color: #0055a5; margin-bottom: 20px; }
+h2 { margin-bottom: 10px; display: flex; align-items: center; }
+h2 img { width: 50px; height: 50px; margin-right: 10px; border-radius:10px;}
+.quiz { display: none; margin-bottom: 30px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.15); transition: all 0.5s ease, transform 0.3s ease; opacity:0; transform: translateX(50px);}
+.quiz.active { display:block; opacity:1; transform: translateX(0);}
+button { margin-top: 10px; padding: 10px 15px; border: none; border-radius: 10px; background: #0055a5; color: #fff; cursor: pointer; font-size: 14px; transition: transform 0.2s ease;}
+button:hover { background: #003f7f; transform: scale(1.05);}
+.correct { color: green; font-weight: bold; animation: bounce 0.5s; }
+.wrong { color: red; font-weight: bold; animation: shake 0.5s; }
+@keyframes bounce { 0% {transform: scale(1);} 50% {transform: scale(1.3);} 100% {transform: scale(1);} }
+@keyframes shake { 0% {transform: translateX(0);} 25% {transform: translateX(-5px);} 50% {transform: translateX(5px);} 75% {transform: translateX(-5px);} 100% {transform: translateX(0);} }
+.drag-item { padding: 10px 15px; margin: 5px; background: #ffebcc; border-radius: 10px; cursor: grab; display: inline-block; }
+.drop-zone { border: 2px dashed #ff9900; padding: 15px; min-width: 140px; margin: 5px; border-radius: 10px; display: inline-block; vertical-align: top; background: #fff8e6;}
+#score-board { text-align: center; display: none; padding: 25px; background: #d1ffd6; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);}
+#score-board h2 { color: #006400; font-size: 28px; margin-bottom: 10px; }
+#progress-bar { width: 100%; background: #ddd; border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 20px; }
+#progress { width: 0%; height: 100%; background: #0055a5; transition: width 0.5s ease; }
+.feedback { font-size: 14px; color: #555; margin-top: 5px; }
+</style>
+</head>
+<body>
+
+<h1>🎮 Trilha Guardiões Digitais</h1>
+<div id="progress-bar"><div id="progress"></div></div>
+
+<audio id="sound-correct" src="https://freesound.org/data/previews/341/341695_6248726-lq.mp3"></audio>
+<audio id="sound-wrong" src="https://freesound.org/data/previews/64/64475_634166-lq.mp3"></audio>
+
+<!-- FASES -->
+<div class="quiz multiple-choice" id="q1">
+  <h2><img src="https://images.pexels.com/photos/4580147/pexels-photo-4580147.jpeg" alt="Segurança Digital"/>1️⃣ Segurança Digital</h2>
+  <p>Qual é a senha mais segura?</p>
+  <input type="radio" name="q1" value="a"> 123456<br>
+  <input type="radio" name="q1" value="b"> MeuNome2025<br>
+  <input type="radio" name="q1" value="c"> X@7!gL9#<br>
+  <button onclick="checkMC('q1','c')">Responder</button>
+  <p id="result-q1"></p>
+  <p class="feedback">💡 Senhas fortes combinam letras, números e símbolos.</p>
+</div>
+
+<div class="quiz true-false" id="q2">
+  <h2><img src="https://images.pexels.com/photos/8301231/pexels-photo-8301231.jpeg" alt="Privacidade Online"/>2️⃣ Privacidade Online</h2>
+  <p>É seguro postar seu endereço completo nas redes sociais?</p>
+  <button onclick="checkTF('q2','a')">Verdadeiro</button>
+  <button onclick="checkTF('q2','b')">Falso</button>
+  <p id="result-q2"></p>
+  <p class="feedback">💡 Nunca compartilhe informações pessoais com desconhecidos.</p>
+</div>
+
+<div class="quiz multiple-choice" id="q3">
+  <h2><img src="https://images.pexels.com/photos/14347951/pexels-photo-14347951.jpeg" alt="Desinformação"/>3️⃣ Combate à Desinformação</h2>
+  <p>Antes de compartilhar uma notícia, o que você deve fazer?</p>
+  <input type="radio" name="q3" value="a"> Verificar a fonte<br>
+  <input type="radio" name="q3" value="b"> Compartilhar rápido<br>
+  <input type="radio" name="q3" value="c"> Mandar para todos os grupos<br>
+  <button onclick="checkMC('q3','a')">Responder</button>
+  <p id="result-q3"></p>
   <p class="feedback">💡 Cheque sempre a origem antes de compartilhar informações.</p>
 </div>
 
@@ -73,7 +138,7 @@ button:hover { background: #003f7f; transform: scale(1.05);}
   <input type="radio" name="q4" value="a"> Jogar sem parar<br>
   <input type="radio" name="q4" value="b"> Fazer pausas regulares longe das telas<br>
   <input type="radio" name="q4" value="c"> Comparar-se com outros<br>
-  <button onclick="checkAnswer('q4','b')">Responder</button>
+  <button onclick="checkMC('q4','b')">Responder</button>
   <p id="result-q4"></p>
   <p class="feedback">💡 Equilibrar tempo de tela com descanso ajuda no bem-estar.</p>
 </div>
@@ -81,8 +146,8 @@ button:hover { background: #003f7f; transform: scale(1.05);}
 <div class="quiz true-false" id="q5">
   <h2><img src="https://images.pexels.com/photos/3184303/pexels-photo-3184303.jpeg" alt="Ética e Respeito"/>5️⃣ Ética e Respeito</h2>
   <p>Ofender colegas em grupos de mensagens é cyberbullying.</p>
-  <button onclick="checkAnswer('q5','a')">Verdadeiro</button>
-  <button onclick="checkAnswer('q5','b')">Falso</button>
+  <button onclick="checkTF('q5','a')">Verdadeiro</button>
+  <button onclick="checkTF('q5','b')">Falso</button>
   <p id="result-q5"></p>
   <p class="feedback">💡 Sempre trate os colegas online com respeito.</p>
 </div>
@@ -93,7 +158,7 @@ button:hover { background: #003f7f; transform: scale(1.05);}
   <input type="radio" name="q6" value="a"> Usar internet só para diversão<br>
   <input type="radio" name="q6" value="b"> Denunciar conteúdos nocivos<br>
   <input type="radio" name="q6" value="c"> Baixar aplicativos piratas<br>
-  <button onclick="checkAnswer('q6','b')">Responder</button>
+  <button onclick="checkMC('q6','b')">Responder</button>
   <p id="result-q6"></p>
   <p class="feedback">💡 Contribua denunciando abusos e respeitando regras.</p>
 </div>
@@ -121,7 +186,7 @@ button:hover { background: #003f7f; transform: scale(1.05);}
   <input type="radio" name="q8" value="a"> Nada<br>
   <input type="radio" name="q8" value="b"> Reduzir o tempo e equilibrar com offline<br>
   <input type="radio" name="q8" value="c"> Jogar mais ainda<br>
-  <button onclick="checkAnswer('q8','b')">Responder</button>
+  <button onclick="checkMC('q8','b')">Responder</button>
   <p id="result-q8"></p>
   <p class="feedback">💡 Equilibre atividades digitais e offline para saúde e aprendizado.</p>
 </div>
@@ -129,15 +194,14 @@ button:hover { background: #003f7f; transform: scale(1.05);}
 <div class="quiz true-false" id="q9">
   <h2><img src="https://images.pexels.com/photos/3184323/pexels-photo-3184323.jpeg" alt="Colaboração"/>9️⃣ Colaboração e Aprendizagem</h2>
   <p>Aprender em grupo online ajuda a entender melhor os conteúdos.</p>
-  <button onclick="checkAnswer('q9','a')">Verdadeiro</button>
-  <button onclick="checkAnswer('q9','b')">Falso</button>
+  <button onclick="checkTF('q9','a')">Verdadeiro</button>
+  <button onclick="checkTF('q9','b')">Falso</button>
   <p id="result-q9"></p>
   <p class="feedback">💡 Trabalhar em grupo estimula aprendizado colaborativo e pensamento crítico.</p>
 </div>
 
 <div id="score-board">
-  <h2>🏆 Parabéns, Você 
-é um Guardião Digital!</h2>
+  <h2>🏆 Parabéns, você é um Guardião Digital!</h2>
   <p id="score-message"></p>
 </div>
 
@@ -155,6 +219,7 @@ function showCurrent() {
 }
 showCurrent();
 
+// Drag & Drop
 let dragItems = document.querySelectorAll('.drag-item');
 let dropZones = document.querySelectorAll('.drop-zone');
 dragItems.forEach(item => { item.addEventListener('dragstart', e => { e.dataTransfer.setData('text', e.target.id); }); });
@@ -163,41 +228,63 @@ dropZones.forEach(zone => {
   zone.addEventListener('drop', e => { let id=e.dataTransfer.getData('text'); e.target.appendChild(document.getElementById(id)); });
 });
 
+// Sons
 function playSound(correct){
   let sound = correct ? document.getElementById('sound-correct') : document.getElementById('sound-wrong');
   sound.currentTime = 0;
   sound.play();
 }
 
-function checkAnswer(qid, correct){
-  let result = document.getElementById('result-'+qid);
-  let radios = document.getElementsByName(qid);
+// Múltipla escolha
+function checkMC(qid, correct){
+  const radios = document.getElementsByName(qid);
   let selected = '';
-  if(radios.length>0){ for(let r of radios){ if(r.checked){ selected=r.value; } } } else { selected = correct; }
+  for(let r of radios){ if(r.checked) selected = r.value; }
+  const result = document.getElementById('result-'+qid);
   if(selected === correct){
     playSound(true);
     result.innerHTML='✅ Correto!';
     result.className='correct';
-    score++;
-    current++;
+    score++; current++; 
     if(current>total){ showScore(); return; }
     setTimeout(showCurrent,500);
-  } else { 
+  } else {
     playSound(false);
     result.innerHTML='❌ Tente novamente!';
-    result.className='wrong'; 
+    result.className='wrong';
   }
 }
 
+// Verdadeiro/Falso
+const correctTF = { q2:'b', q5:'a', q9:'a' }; // valor fixo do botão correto
+function checkTF(qid, selected){
+  const result = document.getElementById('result-'+qid);
+  const correct = correctTF[qid];
+  if(selected === correct){
+    playSound(true);
+    result.innerHTML='✅ Correto!';
+    result.className='correct';
+    score++; current++;
+    if(current>total){ showScore(); return; }
+    setTimeout(showCurrent,500);
+  } else {
+    playSound(false);
+    result.innerHTML='❌ Tente novamente!';
+    result.className='wrong';
+  }
+}
+
+// Drag & Drop
 function checkDrag(){
-  let result = document.getElementById('result-q7');
-  let correto = (document.getElementById('pessoal').contains(document.getElementById('nome')) &&
-                 document.getElementById('pessoal').contains(document.getElementById('idade')) &&
-                 document.getElementById('sensivel').contains(document.getElementById('rg')));
+  const result = document.getElementById('result-q7');
+  const correto = (document.getElementById('pessoal').contains(document.getElementById('nome')) &&
+                   document.getElementById('pessoal').contains(document.getElementById('idade')) &&
+                   document.getElementById('sensivel').contains(document.getElementById('rg')));
   if(correto){ playSound(true); result.innerHTML='✅ Correto!'; result.className='correct'; score++; current++; if(current>total){ showScore(); return; } setTimeout(showCurrent,500); }
   else{ playSound(false); result.innerHTML='❌ Tente novamente!'; result.className='wrong'; }
 }
 
+// Placar final
 function showScore(){
   document.getElementById('score-board').style.display='block';
   document.getElementById('score-message').innerText = `Você completou todas as fases e acertou ${score} de ${total}! 🎉`;
@@ -205,6 +292,9 @@ function showScore(){
   window.scrollTo({ top:0, behavior:'smooth' });
 }
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
